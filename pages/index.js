@@ -35,6 +35,7 @@ export async function getStaticProps() {
   const meetupCollection = db.collection("meetups");
   const meetups = await meetupCollection.find().toArray();
   return {
+    fallback: "blocking",
     props: {
       meetups: meetups.map((meetup) => ({
         title: meetup.title,
