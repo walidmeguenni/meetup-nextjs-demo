@@ -51,6 +51,11 @@ export async function getStaticProps(context) {
   console.log(meetup);
   client.close();
   // send a http request and fetch data
+   if (!meetup) {
+    return {
+      notFound: true,
+    }
+  }
   return {
     props: {
       image: meetup.image,
